@@ -4,7 +4,8 @@ sap.ui.define(
     'sap/ui/base/Object',
     'app/libs/axios'
   ],
-  function (env, BaseObject, axios) {
+  function (
+    env, BaseObject, axios) {
     'use strict';
 
 
