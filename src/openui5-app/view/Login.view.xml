@@ -1,0 +1,42 @@
+<mvc:View controllerName="app.controller.Login"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core"
+          xmlns:f="sap.f"
+          xmlns:card="sap.f.cards"
+          xmlns:html="http://www.w3.org/1999/xhtml">
+  <HBox alignItems="Center" justifyContent="Center" width="100%" height="100%">
+    <f:Card
+      height="350px"
+      width="400px">
+      <f:header>
+        <card:Header
+          title="Giriş Yap"
+          subtitle=""
+          iconSrc=""/>
+      </f:header>
+      <f:content>
+        <VBox class="sapUiNoContentPadding" width="100%">
+          <VBox class="sapUiMediumMarginBegin sapUiMediumMarginTop">
+            <Label text="Kullanıcı Adı" design="Bold"/>
+            <Input type="Text" value="{login>/username}"
+                   placeholder="Kullanıcı Adı Giriniz" width="95%"/>
+          </VBox>
+          <VBox class="sapUiMediumMarginBegin sapUiTinyMarginTop">
+            <Label text="Parola" design="Bold"/>
+            <Input type="Password"
+                   value="{login>/password}"
+                   placeholder="Parola Giriniz" width="95%"/>
+          </VBox>
+          <VBox class="sapUiMediumMarginBegin sapUiMediumMarginTop">
+            <HBox alignItems="Stretch">
+              <Button text="Giriş Yap" type="Emphasized" width="22rem" press="onLogin"/>
+            </HBox>
+          </VBox>
+
+        </VBox>
+      </f:content>
+    </f:Card>
+  </HBox>
+
+</mvc:View>

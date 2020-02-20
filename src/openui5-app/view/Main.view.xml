@@ -1,0 +1,15 @@
+<mvc:View
+  controllerName="app.controller.Main"
+  xmlns="sap.ui.table"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:m="sap.m"
+  height="100%">
+  <m:Page title="Hello World"
+          showHeader="true"
+          enableScrolling="true"
+          class="sapUiContentPadding sapUiSizeCompact">
+    <m:content>
+        <m:Button text="Hello World" type="Emphasized" press="onPress"/>
+    </m:content>
+  </m:Page>
+</mvc:View>

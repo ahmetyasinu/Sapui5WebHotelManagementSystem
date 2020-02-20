@@ -1,0 +1,169 @@
+<mvc:View
+  controllerName="app.controller.Update"
+  height="100%"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:l="sap.ui.layout"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:tnt="sap.tnt"
+  class="sapUiSizeCompact">
+  <App id="app">
+    <Page title="Hotel Management System">
+      <tnt:InfoLabel width="130px" text="Rezervasyon" colorScheme="8"
+                     displayOnly="true"
+                     icon="sap-icon://home-share"/>
+      <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+        <headerToolbar>
+          <Toolbar height="3rem">
+            <Title text="Kişi Bilgileri"/>
+          </Toolbar>
+        </headerToolbar>
+        <content>
+          <l:Grid hSpacing="1" vSpacing="0" defaultSpan="L6 M12 S12">
+            <VBox alignItems="Stretch" justifyContent="Stretch">
+              <VBox width="100%" alignItems="Center" justifyContent="Center">
+                <HBox width="100%" alignItems="Center" justifyContent="Start">
+                  <tnt:InfoLabel id="ail8" width="130px" text="İsim Soyisim"
+                                 colorScheme="8" displayOnly="true"
+                                 icon="sap-icon://home-share"/>
+                  <Label width="10px" text="  "/>
+                  <VBox width="100%" alignItems="Stretch"
+                        justifyContent="Stretch">
+                    <Input value="{update>/nameSurname}"/>
+                  </VBox>
+                </HBox>
+              </VBox>
+              <VBox width="100%" alignItems="Start" justifyContent="Stretch">
+                <HBox width="100%" alignItems="Center" justifyContent="Stretch">
+                  <tnt:InfoLabel width="130px" id="ail28" text="Tc"
+                                 colorScheme="8" displayOnly="true"
+                                 icon="sap-icon://home-share"/>
+
+                  <Label width="10px" text="  "/>
+                  <VBox width="100%" alignItems="Stretch"
+                        justifyContent="Stretch">
+                    <Input value="{update>/tc}"/>
+                  </VBox>
+                </HBox>
+              </VBox>
+
+            </VBox>
+            <VBox alignItems="Start" justifyContent="Stretch">
+              <HBox width="100%" alignItems="Center" justifyContent="Center">
+                <tnt:InfoLabel width="130px" id="ail2w8" text="Email"
+                               colorScheme="8" displayOnly="true"
+                               icon="sap-icon://home-share"/>
+                <Label width="10px" text="  "/>
+                <VBox width="100%" alignItems="Stretch"
+                      justifyContent="Stretch">
+                  <Input value="{update>/email}"/>
+                </VBox>
+              </HBox>
+              <VBox width="100%" alignItems="Start" justifyContent="Stretch">
+                <HBox width="100%" alignItems="Center" justifyContent="Stretch">
+                  <tnt:InfoLabel width="130px" id="7" text="Telefon No"
+                                 colorScheme="8"
+                                 displayOnly="true"
+                                 icon="sap-icon://home-share"/>
+                  <Label width="10px" text="  "/>
+                  <VBox width="100%" alignItems="Stretch"
+                        justifyContent="Stretch">
+                    <Input value="{update>/telNumber}"/>
+                  </VBox>
+                </HBox>
+              </VBox>
+            </VBox>
+          </l:Grid>
+        </content>
+      </Panel>
+
+      <Panel width="auto" class="sapUiResponsiveMargin">
+        <headerToolbar>
+          <Toolbar height="3rem">
+            <Title text="Rezervasyon Bilgileri"/>
+            <ToolbarSpacer/>
+          </Toolbar>
+        </headerToolbar>
+        <content>
+          <l:Grid hSpacing="1" vSpacing="0" defaultSpan="L6 M12 S12">
+            <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+              <VBox alignItems="Center" justifyContent="Center">
+                <HBox width="100%" alignItems="Center" justifyContent="Start">
+                  <tnt:InfoLabel width="130px" id="as" text="Başlangıç Tarihi"
+                                 colorScheme="8" displayOnly="true"
+                                 icon="sap-icon://home-share"/>
+                  <Label width="10px" text="  "/>
+                  <VBox width="100%" alignItems="Stretch"
+                        justifyContent="Stretch">
+                    <DatePicker value="{update>/startDate}"/>
+                  </VBox>
+                </HBox>
+
+                <HBox width="100%" alignItems="Center" justifyContent="Start">
+                  <tnt:InfoLabel width="130px" id="ails28" text="Bitiş Tarhihi"
+                                 colorScheme="8" displayOnly="true"
+                                 icon="sap-icon://home-share"/>
+                  <Label width="10px" text="  "/>
+                  <VBox width="100%" alignItems="Stretch"
+                        justifyContent="Stretch">
+                    <DatePicker value="{update>/endDate}"/>
+                  </VBox>
+                </HBox>
+
+              </VBox>
+
+            </VBox>
+
+            <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+              <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+
+                <HBox width="100%" alignItems="Center" justifyContent="Start">
+                  <tnt:InfoLabel width="130px" id="5" text="Oda Tipi Seçiniz"
+                                 colorScheme="8"
+                                 displayOnly="true"
+                                 icon="sap-icon://home-share"/>
+                  <Label width="10px" text="  "/>
+
+                  <VBox width="100%" alignItems="Stretch"
+                        justifyContent="Stretch">
+                    <Select width="100%" selectedKey="{update>/roomTypeId}"
+                            change="updateRoomList"
+                            forceSelection="false"
+                            items="{roomTypes>/}">
+                      <core:Item key="{roomTypes>id}" text="{roomTypes>type}"/>
+                    </Select>
+                  </VBox>
+                </HBox>
+                <HBox width="100%" alignItems="Center" justifyContent="Start">
+                  <tnt:InfoLabel width="130px" id="il8" text="Oda Numarası"
+                                 colorScheme="8"
+                                 displayOnly="true"
+                                 icon="sap-icon://home-share"/>
+                  <Label width="10px" text="  "/>
+                  <VBox width="100%" alignItems="Stretch"
+                        justifyContent="Stretch">
+                    <Select width="100%" selectedKey="{update>/room_id}"
+                            items="{rooms>/}">
+                      <core:Item  key="{rooms>roomNumber}" text="{rooms>roomNumber}"/>
+                    </Select>
+                  </VBox>
+                </HBox>
+
+              </VBox>
+            </VBox>
+          </l:Grid>
+        </content>
+      </Panel>
+      <footer>
+        <Toolbar>
+          <HBox width="1500%" alignItems="Start" justifyContent="Start">
+            <Button text="Rezervasyonu Kaydet" press="getReservation" type="Emphasized"/>
+          </HBox>
+               <ToolbarSpacer/>
+          <Button text="Rezervasyonları Listele" press="reservationList" type="Emphasized"/>
+        </Toolbar>
+      </footer>
+    </Page>
+  </App>
+</mvc:View>

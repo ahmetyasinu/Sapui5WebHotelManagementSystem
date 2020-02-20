@@ -1,0 +1,11 @@
+<mvc:View
+    controllerName="app.controller.App"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+     <App
+      id="mainContents"
+      backgroundColor=""
+      backgroundImage=""
+      backgroundRepeat="false"
+      backgroundOpacity="1" />
+</mvc:View>

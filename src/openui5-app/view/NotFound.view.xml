@@ -1,0 +1,13 @@
+<mvc:View
+  controllerName="app.controller.NotFound"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+  <Page
+    showHeader="false">
+    <content>
+      <Text
+        text="Ups... nothing found"/>
+    </content>
+  </Page>
+</mvc:View>

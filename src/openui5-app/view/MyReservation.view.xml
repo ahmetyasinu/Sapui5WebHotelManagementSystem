@@ -1,0 +1,102 @@
+<mvc:View
+  controllerName="app.controller.MyReservation"
+  xmlns="sap.ui.table"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:u="sap.ui.unified"
+  xmlns:c="sap.ui.core"
+  xmlns:m="sap.m"
+  height="100%">
+  <m:Page
+    showHeader="false"
+    enableScrolling="false"
+    class="sapUiContentPadding">
+    <m:content>
+      <Table
+        rows="{reservation>/}"
+        selectionMode="MultiToggle"
+        visibleRowCount="7"
+        paste="onPaste"
+        ariaLabelledBy="title">
+        <extension>
+          <m:OverflowToolbar>
+            <m:Title id="title" text="Rezervasyon Listesi"/>
+            <m:ToolbarSpacer/>
+          </m:OverflowToolbar>
+        </extension>
+        <columns>
+          <Column width="11rem">
+            <m:Label text="Adı Soyadı"/>
+            <template>
+              <m:Text text="{reservation>nameSurname}" wrapping="false"/>
+            </template>
+          </Column>
+          <Column width="11rem">
+            <m:Label text="Tc"/>
+            <template>
+              <m:Text text="{reservation>tc}" wrapping="false"/>
+            </template>
+          </Column>
+          <Column width="11rem">
+            <m:Label text="Email"/>
+            <template>
+              <m:Text text="{reservation>email}" wrapping="false"/>
+            </template>
+          </Column>
+          <Column width="11rem">
+            <m:Label text="Oda tipi"/>
+            <template>
+              <m:Text text="{reservation>roomType/type}" wrapping="false"/>
+            </template>
+          </Column>
+          <Column width="11rem">
+            <m:Label text="Oda Numarası"/>
+            <template>
+              <m:Text text="{reservation>room/roomNumber}" wrapping="false"/>
+            </template>
+          </Column>
+          <Column width="9rem">
+            <m:Label text="Gecelik Ücreti"/>
+            <template>
+              <m:Text text="{reservation>roomType/price}"/>
+            </template>
+          </Column>
+          <Column width="11rem" hAlign="Center">
+            <m:Label text="Başlangıç Tarihi"/>
+            <template>
+              <m:DatePicker editable="false" value="{reservation>startDate}" placeholder="Tarih Belirleyin"/>
+            </template>
+          </Column>
+          <Column width="11rem" hAlign="Center">
+            <m:Label text="Bitiş Tarihi"/>
+            <template>
+              <m:DatePicker editable="false" change="disable" value="{reservation>endDate}" />
+            </template>
+          </Column>
+          <Column width="11rem" hAlign="Center">
+            <m:Label text="Güncelle"/>
+            <template>
+              <m:Button text="Seyahat Güncelle" type="Emphasized"
+                        press="update"/>
+            </template>
+          </Column>
+          <Column width="11rem" hAlign="Center">
+            <m:Label text="Sil"/>
+            <template>
+              <m:Button text="Seyahat Sil" type="Emphasized"
+                        press="onDeleteTravel"/>
+            </template>
+          </Column>
+        </columns>
+        <footer>
+          <m:Toolbar>
+            <m:ToolbarSpacer/>
+
+            <m:Button text="Rezervasyon Ekranına Dön" press="turn" type="Accept" />
+
+          </m:Toolbar>
+        </footer>
+      </Table>
+    </m:content>
+
+  </m:Page>
+</mvc:View>

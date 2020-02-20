@@ -1,0 +1,182 @@
+{
+  "name": "openui5-starter",
+  "version": "0.3.10",
+  "description": "OpenUI5 template app build with gulp.",
+  "keywords": [
+    "pulseshift",
+    "OpenUI5",
+    "ui5"
+  ],
+  "scripts": {
+    "test": "yarn eslint src/openui5-app --ext .js --cache",
+    "start": "env-cmd dev babel-node node_modules/gulp/bin/gulp.js --silent",
+    "start:verbose": "env-cmd dev babel-node node_modules/gulp/bin/gulp.js",
+    "start:dist": "env-cmd prod babel-node node_modules/gulp/bin/gulp.js testDist",
+    "build": "env-cmd prod babel-node node_modules/gulp/bin/gulp.js build --silent",
+    "build:verbose": "env-cmd prod babel-node node_modules/gulp/bin/gulp.js build",
+    "build:disclaimer": "yarn licenses generate-disclaimer --production >> DISCLAIMER.md",
+    "deploy": "NODE_ENV=production babel-node node_modules/gulp/bin/gulp.js deploy --silent",
+    "deploy:verbose": "NODE_ENV=production babel-node node_modules/gulp/bin/gulp.js deploy",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --no-semi --single-quote",
+      "git add"
+    ]
+  },
+  "repository": {
+    "url": "git+https://github.com/pulseshift/openui5-gulp-starter-kit.git",
+    "type": "git"
+  },
+  "authors": [
+    "Jascha Quintern <jascha.quintern@pulseshift.com>",
+    "Michael Dell <michael.dell@pulseshift.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pulseshift/openui5-gulp-starter-kit/issues"
+  },
+  "homepage": "https://github.com/pulseshift/openui5-gulp-starter-kit#readme",
+  "main": "src/index.hbs",
+  "favicon": {
+    "src": "src/assets/favicon/master.png"
+  },
+  "ui5": {
+    "cacheBuster": false,
+    "nwabapUpload": {
+      "conn": {
+        "server": "",
+        "useStrictSSL": false
+      },
+      "auth": {
+        "user": "",
+        "pwd": ""
+      }
+    },
+    "indexTitle": "UI5 Starter App",
+    "build": {
+      "cacheBuster": true,
+      "compression": [
+        "gzip",
+        "brotli"
+      ]
+    },
+    "src": "cdn",
+    "srcLinks": {
+      "githubRelease": {
+        "url": "https://github.com/SAP/openui5/archive/{{version}}.zip",
+        "version": "1.50.8",
+        "isPrebuild": false,
+        "isArchive": true
+      },
+      "githubMaster": {
+        "url": "https://github.com/SAP/openui5/archive/master.zip",
+        "version": "1.50.2-SNAPSHOT",
+        "isPrebuild": false,
+        "isArchive": true
+      },
+      "cdnDownload": {
+        "url": "https://openui5.hana.ondemand.com/downloads/openui5-sdk-{{version}}.zip",
+        "version": "1.50.8",
+        "isPrebuild": true,
+        "isArchive": true
+      },
+      "cdn": {
+        "url": "https://openui5.hana.ondemand.com/{{version}}/resources/sap-ui-core.js",
+        "version": "1.69.0",
+        "isPrebuild": true,
+        "isArchive": false
+      },
+      "local": {
+        "url": "ui5/your-local-build/sap-ui-core.js",
+        "version": "1.50.8",
+        "isPrebuild": true,
+        "isArchive": false
+      }
+    },
+    "vendor": {
+      "name": "app.libs",
+      "path": "src/libs"
+    },
+    "theme": "sap_fiori_3",
+    "apps": [
+      {
+        "name": "app",
+        "path": "src/openui5-app",
+        "nwabapDestination": {
+          "package": "$TMP",
+          "bspcontainer": "ZZ_UI5_LOCAL",
+          "bspcontainer_text": "UI5 upload local objects",
+          "langauage": "EN",
+          "calc_appindex": true
+        }
+      }
+    ],
+    "libraries": [],
+    "themes": [],
+    "assets": []
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^10.0.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browser-sync": "^2.23.6",
+    "browserify": "^16.0.0",
+    "commander": "^2.13.0",
+    "connect-gzip-static": "^2.1.1",
+    "del": "^5.0.0",
+    "env-cmd": "^7.0.0",
+    "eslint": "^6.0.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "gulp": "4.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-brotli": "^1.2.1",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-cli": "^2.0.1",
+    "gulp-favicons": "^2.2.7",
+    "gulp-gzip": "^1.4.2",
+    "gulp-handlebars-html": "^0.0.2",
+    "gulp-htmlmin": "^5.0.0",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-less": "^4.0.0",
+    "gulp-main-npm-files": "^1.0.5",
+    "gulp-nwabap-ui5uploader": "^0.4.1",
+    "gulp-order": "^1.1.1",
+    "gulp-plumber": "^1.2.0",
+    "gulp-pretty-data": "^0.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-tap": "^1.0.1",
+    "gulp-touch-cmd": "^0.0.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-ui5-preload": "^1.3.1",
+    "gulp-util": "^3.0.8",
+    "handlebars": "^4.0.11",
+    "husky": "^3.0.0",
+    "less": "^3.0.2",
+    "less-plugin-autoprefix": "^1.5.1",
+    "lint-staged": "^9.0.0",
+    "ora": "^3.0.0",
+    "prettier": "^1.10.2",
+    "ui5-cache-buster": "^0.1.0",
+    "ui5-lib-util": "^0.1.3",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "moment": "^2.20.1",
+    "sockjs-client": "^1.4.0",
+    "stomp-websocket": "^2.3.4-next",
+    "stompjs": "^2.3.3",
+    "voca": "^1.4.0"
+  }
+}
