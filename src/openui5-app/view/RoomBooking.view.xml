@@ -69,7 +69,7 @@
                   <Label width="10px" text="  "/>
                   <VBox width="100%" alignItems="Stretch"
                         justifyContent="Stretch">
-                    <Input value="{roomBooking>/telNumber}"/>
+                    <Input placeholder="0555 555 55 55" value="{roomBooking>/telNumber}"/>
                   </VBox>
                 </HBox>
               </VBox>
@@ -143,7 +143,9 @@
                   <VBox width="100%" alignItems="Stretch"
                         justifyContent="Stretch">
                     <Select width="100%" selectedKey="{roomBooking>/roomId}"
+                            forceSelection="false"
                             items="{rooms>/}">
+
                       <core:Item  key="{rooms>roomNumber}" text="{rooms>roomNumber}"/>
                     </Select>
                   </VBox>
@@ -157,7 +159,7 @@
                     <Label width="10px" text="  "/>
                     <VBox width="100%" alignItems="Stretch"
                           justifyContent="Stretch">
-                      <Input  editable="false" value="{roomBooking>/sumPrice}"/>
+                      <Input id="asw" editable="false" value="{roomBooking>/sumPrice}"/>
                     </VBox>
                   </HBox>
                 </HBox>

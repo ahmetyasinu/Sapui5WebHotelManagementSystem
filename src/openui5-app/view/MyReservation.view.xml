@@ -10,6 +10,11 @@
     showHeader="false"
     enableScrolling="false"
     class="sapUiContentPadding">
+    <m:subHeader>
+      <m:OverflowToolbar>
+        <m:SearchField search="onSearch" width="25%" />
+      </m:OverflowToolbar>
+    </m:subHeader>
     <m:content>
       <Table
         rows="{reservation>/}"
@@ -75,14 +80,14 @@
           <Column width="11rem" hAlign="Center">
             <m:Label text="Güncelle"/>
             <template>
-              <m:Button text="Seyahat Güncelle" type="Emphasized"
+              <m:Button text="Rezervasyon Güncelle" type="Emphasized"
                         press="update"/>
             </template>
           </Column>
           <Column width="11rem" hAlign="Center">
             <m:Label text="Sil"/>
             <template>
-              <m:Button text="Seyahat Sil" type="Emphasized"
+              <m:Button text="(of) Seyahat Sil" type="Emphasized"
                         press="onDeleteTravel"/>
             </template>
           </Column>

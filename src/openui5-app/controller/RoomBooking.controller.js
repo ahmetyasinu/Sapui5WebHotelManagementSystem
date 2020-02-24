@@ -10,6 +10,7 @@ sap.ui.define([
 
   var self = Object.create(null);
 
+
   let roomBookingModel = new JSONModel();
   let roomModel = new JSONModel();
   let roomTypesModel = new JSONModel();
@@ -68,11 +69,14 @@ sap.ui.define([
       hotelService.save(roomBookingModel.getData(),
         function (response) {
           roomBookingModel.setData(response.data);
-          alert("başarılı");
+          sap.m.MessageToast.show("Rezervasyon Kaydedildi.")
+          roomBookingModel.setData({});
         },
         function (error) {
-          alert("Başarısız");
-          sap.m.MessageToast.show("Başarısız");
+        if (error.response.data.errors)
+          sap.m.MessageToast.show(error.response.data.errors[0].defaultMessage);
+        else if(error.response.data.message)
+          sap.m.MessageToast.show(error.response.data.message);
         }
       );
 
@@ -80,6 +84,19 @@ sap.ui.define([
     },
     reservationList: function () {
       this.getRouter().navTo("myreservation");
+    },
+    operationUpdate: function (startDate, endDate, key) {
+      if (startDate && endDate && key&&startDate!=""&&endDate!=""&&key!="") {
+        hotelService.operationUpdate(startDate, endDate, key
+          , function (response) {
+            roomBookingModel.setProperty('/sumPrice',  response.data)
+          },
+          function (error) {
+            roomBookingModel.setProperty('/sumPrice', null)
+            sap.m.MessageToast.show(error.response.data.message);
+
+          })
+      }
     },
 
 
@@ -99,29 +116,11 @@ sap.ui.define([
       );
       let startDate = self.getView().byId("startDateId").getValue();
       let endDate = self.getView().byId("endDateId").getValue();
+      let selectedRoomType = self.getView().byId("selectRoomTypeId");
+      let key = selectedRoomType.getSelectedKey();
 
 
-      if ( startDate != null || startDate != undefined || startDate != "")
-
-
-      if (endDate != "" && startDate != "") {
-        let selectedRoomType = self.getView().byId("selectRoomTypeId");
-        let key = selectedRoomType.getSelectedKey();
-        let price;
-        let startDateObject = new Date(startDate);
-        let endDateObject = new Date(endDate);
-        roomTypesModel.getData().forEach(type => {
-          if (key == type.id) {
-            price = type.price;
-          }
-        });
-        const diffTime = Math.abs(endDateObject - startDateObject);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        console.log(diffDays);
-        console.log(typeof price);
-        let sumPrice = (price * diffDays);
-        roomBookingModel.setProperty('/sumPrice', sumPrice);
-      }
+      self.operationUpdate(startDate, endDate, key);
 
 
     },
@@ -130,49 +129,20 @@ sap.ui.define([
       let endDate = self.getView().byId("endDateId").getValue();
       let selectedRoomType = self.getView().byId("selectRoomTypeId");
       let key = selectedRoomType.getSelectedKey();
+      self.operationUpdate(startDate, endDate, key);
 
-      if (endDate != "" && key != "") {
-        let price;
-        let startDateObject = new Date(startDate);
-        let endDateObject = new Date(endDate);
-        roomTypesModel.getData().forEach(type => {
-          if (key == type.id) {
-            price = type.price;
-
-          }
-
-        });
-        const diffTime = Math.abs(endDateObject - startDateObject);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        console.log(diffDays);
-        console.log(typeof price);
-        let sumPrice = (price * diffDays);
-        roomBookingModel.setProperty('/sumPrice', sumPrice);
-      }
-
-    },
+    }
+    ,
 
     changeEndDate: function (oEvent) {
       let startDate = self.getView().byId("startDateId").getValue();
       let endDate = oEvent.getParameter("value");
       let selectedRoomType = self.getView().byId("selectRoomTypeId");
       let key = selectedRoomType.getSelectedKey();
-      if (startDate != "" && key != "") {
-        let price;
-        let startDateObject = new Date(startDate);
-        let endDateObject = new Date(endDate);
-        roomTypesModel.getData().forEach(type => {
-          if (key == type.id) {
-            price = type.price;
 
-          }
+      self.operationUpdate(startDate, endDate, key);
 
-        });
-        const diffTime = Math.abs(endDateObject - startDateObject);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        let sumPrice = (price * diffDays);
-        roomBookingModel.setProperty('/sumPrice', sumPrice);
-      }
+
     }
 
 

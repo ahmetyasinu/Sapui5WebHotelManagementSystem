@@ -29,6 +29,12 @@ sap.ui.define(
           .then(fnSuccess)
           .catch(fnError);
       },
+      operationUpdate:function(startDate,endDate,roomTypeId,fnSuccess,fnError){
+        axios.get(this.url+'/price/'+startDate+'/'+endDate+'/'+roomTypeId)
+          .then(fnSuccess)
+          .catch(fnError);
+
+      },
 
 
       findAll: function (fnSuccess, fnError) {
@@ -38,6 +44,12 @@ sap.ui.define(
       },
       findById:function (id,fnSuccess,fnError) {
         axios.get(this.url+'/update/'+id)
+          .then(fnSuccess)
+          .catch(fnError);
+
+      },
+      findByNameSurname:function (nameSurname,fnSuccess,fnError) {
+        axios.get(this.url+'/searchField/'+nameSurname)
           .then(fnSuccess)
           .catch(fnError);
 
