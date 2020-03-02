@@ -3,7 +3,7 @@ sap.ui.define([
   'sap/ui/model/json/JSONModel',
   'app/service/HotelService',
   "sap/ui/model/Filter"
-], function (BaseController, JSONModel, HotelService, Filter) {
+], function (BaseController, JSONModel, HotelService) {
   "use strict";
 
   var self = Object.create(null);
@@ -85,7 +85,25 @@ sap.ui.define([
           }
         );
 
-      }
+      },
+    deleteReservation:function (oEvent) {
+      let selectedRow = oEvent.getSource().getBindingContext("reservation").getObject();
+      hotelService.delete(
+        selectedRow.rezervationId,
+
+          function (response) {
+            self.getReservation();
+            alert("Güncelleme Başarıyla Yapıldı.");
+            location.reload();
+          },
+
+          function (error) {
+            alert("Başarısız");
+            sap.m.MessageToast.show("Başarısız");
+
+          })
+
+    }
 
     }
   );

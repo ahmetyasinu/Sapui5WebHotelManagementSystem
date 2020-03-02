@@ -3,11 +3,15 @@ sap.ui.define([
   "sap/ui/model/json/JSONModel",
   "app/service/HotelService",
   "app/service/RoomTypeService",
-  "app/service/RoomService"
+  "app/service/RoomService",
+  "sap/m/Button",
+  "sap/m/Dialog",
+  "sap/m/Text",
+  "sap/m/library"
 
-], function (BaseController, JSONModel, HotelService, RoomTypeService, RoomService) {
+], function (BaseController, JSONModel, HotelService, RoomTypeService, RoomService, Button, Dialog, Text, mobileLibrary) {
   "use strict";
-
+  var ButtonType = mobileLibrary.ButtonType;
   var self = Object.create(null);
 
 
@@ -73,10 +77,11 @@ sap.ui.define([
           roomBookingModel.setData({});
         },
         function (error) {
-        if (error.response.data.errors)
-          sap.m.MessageToast.show(error.response.data.errors[0].defaultMessage);
-        else if(error.response.data.message)
-          sap.m.MessageToast.show(error.response.data.message);
+          if (error.response.data.errors)
+            self.onMessageSuccessDialogPress(error);
+
+          else if (error.response.data.message)
+            self.oMessageSuccessDialogPress(error)
         }
       );
 
@@ -86,10 +91,10 @@ sap.ui.define([
       this.getRouter().navTo("myreservation");
     },
     operationUpdate: function (startDate, endDate, key) {
-      if (startDate && endDate && key&&startDate!=""&&endDate!=""&&key!="") {
+      if (startDate && endDate && key && startDate != "" && endDate != "" && key != "") {
         hotelService.operationUpdate(startDate, endDate, key
           , function (response) {
-            roomBookingModel.setProperty('/sumPrice',  response.data)
+            roomBookingModel.setProperty('/sumPrice', response.data)
           },
           function (error) {
             roomBookingModel.setProperty('/sumPrice', null)
@@ -97,6 +102,52 @@ sap.ui.define([
 
           })
       }
+    },
+    onMessageSuccessDialogPress: function (error) {
+
+      var oDialog = new Dialog({
+        title: 'Error',
+        type: 'Message',
+        state: 'Error',
+        content: new Text({
+          text:error.response.data.errors[0].defaultMessage
+        }),
+        beginButton: new Button({
+          type: ButtonType.Emphasized,
+          text: 'OK',
+          press: function () {
+            oDialog.close();
+          }
+        }),
+        afterClose: function () {
+          oDialog.destroy();
+        }
+      });
+
+      oDialog.open();
+    },
+    oMessageSuccessDialogPress: function (error) {
+
+      var oDialog = new Dialog({
+        title: 'Error',
+        type: 'Message',
+        state: 'Error',
+        content: new Text({
+          text:error.response.data.message
+        }),
+        beginButton: new Button({
+          type: ButtonType.Emphasized,
+          text: 'OK',
+          press: function () {
+            oDialog.close();
+          }
+        }),
+        afterClose: function () {
+          oDialog.destroy();
+        }
+      });
+
+      oDialog.open();
     },
 
 

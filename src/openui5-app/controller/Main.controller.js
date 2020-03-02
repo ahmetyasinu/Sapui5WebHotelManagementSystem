@@ -19,6 +19,10 @@ sap.ui.define([
     onPress:function () {
       this.getRouter().navTo("roombooking");
 
+    },
+    onReport:function () {
+      this.getRouter().navTo("report");
+
     }
 
 

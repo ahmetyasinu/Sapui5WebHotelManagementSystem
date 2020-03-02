@@ -98,6 +98,11 @@
           "pattern": "main",
           "name": "main",
           "target": "main"
+        },
+        {
+          "pattern": "report",
+          "name": "report",
+          "target": "report"
         }
       ],
       "targets": {
@@ -115,6 +120,9 @@
         },
         "update": {
           "viewName": "Update"
+        },
+        "report": {
+          "viewName": "Report"
         }
       }
 

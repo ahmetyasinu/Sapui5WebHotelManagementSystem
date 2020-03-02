@@ -39,7 +39,6 @@
                   <tnt:InfoLabel width="130px" id="ail28" text="Tc"
                                  colorScheme="8" displayOnly="true"
                                  icon="sap-icon://home-share"/>
-
                   <Label width="10px" text="  "/>
                   <VBox width="100%" alignItems="Stretch"
                         justifyContent="Stretch">
@@ -47,7 +46,6 @@
                   </VBox>
                 </HBox>
               </VBox>
-
             </VBox>
             <VBox alignItems="Start" justifyContent="Stretch">
               <HBox width="100%" alignItems="Center" justifyContent="Center">
@@ -69,7 +67,8 @@
                   <Label width="10px" text="  "/>
                   <VBox width="100%" alignItems="Stretch"
                         justifyContent="Stretch">
-                    <Input placeholder="0555 555 55 55" value="{roomBooking>/telNumber}"/>
+                    <Input placeholder="0555 555 55 55"
+                           value="{roomBooking>/telNumber}"/>
                   </VBox>
                 </HBox>
               </VBox>
@@ -77,7 +76,6 @@
           </l:Grid>
         </content>
       </Panel>
-
       <Panel width="auto" class="sapUiResponsiveMargin">
         <headerToolbar>
           <Toolbar height="3rem">
@@ -96,10 +94,11 @@
                   <Label width="10px" text="  "/>
                   <VBox width="100%" alignItems="Stretch"
                         justifyContent="Stretch">
-                    <DatePicker valueFormat="yyyy-MM-dd" id="startDateId" change="changeStartDate" value="{roomBooking>/startDate}"/>
+                    <DatePicker valueFormat="yyyy-MM-dd" id="startDateId"
+                                change="changeStartDate"
+                                value="{roomBooking>/startDate}"/>
                   </VBox>
                 </HBox>
-
                 <HBox width="100%" alignItems="Center" justifyContent="Start">
                   <tnt:InfoLabel width="130px" id="ails28" text="Bitiş Tarihi"
                                  colorScheme="8" displayOnly="true"
@@ -107,26 +106,25 @@
                   <Label width="10px" text="  "/>
                   <VBox width="100%" alignItems="Stretch"
                         justifyContent="Stretch">
-                    <DatePicker id="endDateId" valueFormat="yyyy-MM-dd" change="changeEndDate" value="{roomBooking>/endDate}"/>
+                    <DatePicker id="endDateId" valueFormat="yyyy-MM-dd"
+                                change="changeEndDate"
+                                value="{roomBooking>/endDate}"/>
                   </VBox>
                 </HBox>
-
               </VBox>
-
             </VBox>
-
             <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
               <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-
                 <HBox width="100%" alignItems="Center" justifyContent="Start">
-                  <tnt:InfoLabel  width="130px" id="5" text="Oda Tipi Seçiniz"
+                  <tnt:InfoLabel width="130px" id="5" text="Oda Tipi Seçiniz"
                                  colorScheme="8"
                                  displayOnly="true"
                                  icon="sap-icon://home-share"/>
                   <Label width="10px" text="  "/>
                   <VBox width="100%" alignItems="Stretch"
                         justifyContent="Stretch">
-                    <Select id="selectRoomTypeId" width="100%" selectedKey="{roomBooking>/roomTypeId}"
+                    <Select id="selectRoomTypeId" width="100%"
+                            selectedKey="{roomBooking>/roomTypeId}"
                             change="updateRoomList"
                             forceSelection="false"
                             items="{roomTypes>/}">
@@ -145,12 +143,11 @@
                     <Select width="100%" selectedKey="{roomBooking>/roomId}"
                             forceSelection="false"
                             items="{rooms>/}">
-
-                      <core:Item  key="{rooms>roomNumber}" text="{rooms>roomNumber}"/>
+                      <core:Item key="{rooms>roomNumber}"
+                                 text="{rooms>roomNumber}"/>
                     </Select>
                   </VBox>
                   <Label width="10px" text="  "/>
-
                   <HBox width="100%" alignItems="Center" justifyContent="Start">
                     <tnt:InfoLabel width="130px" id="il68" text="Ücret"
                                    colorScheme="8"
@@ -159,7 +156,8 @@
                     <Label width="10px" text="  "/>
                     <VBox width="100%" alignItems="Stretch"
                           justifyContent="Stretch">
-                      <Input id="asw" editable="false" value="{roomBooking>/sumPrice}"/>
+                      <Input id="asw" editable="false"
+                             value="{roomBooking>/sumPrice}"/>
                     </VBox>
                   </HBox>
                 </HBox>
@@ -171,10 +169,10 @@
       <footer>
         <Toolbar>
           <HBox width="1500%" alignItems="Start" justifyContent="Start">
-            <Button text="Rezervasyonları Listele" press="reservationList" type="Emphasized"/>
-
+            <Button text="Rezervasyonları Listele" press="reservationList"
+                    type="Emphasized"/>
           </HBox>
-               <ToolbarSpacer/>
+          <ToolbarSpacer/>
           <Button text="Rezervasyonu Kaydet" press="onSave" type="Emphasized"/>
         </Toolbar>
       </footer>

@@ -48,6 +48,12 @@ sap.ui.define(
           .catch(fnError);
 
       },
+      findReport:function (fnSuccess,fnError) {
+        axios.get(this.url+'/report/')
+          .then(fnSuccess)
+          .catch(fnError);
+
+      },
       findByNameSurname:function (nameSurname,fnSuccess,fnError) {
         axios.get(this.url+'/searchField/'+nameSurname)
           .then(fnSuccess)

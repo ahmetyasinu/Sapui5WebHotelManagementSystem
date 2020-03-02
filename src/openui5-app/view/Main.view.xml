@@ -1,15 +1,21 @@
 <mvc:View
-  controllerName="app.controller.Main"
-  xmlns="sap.ui.table"
-  xmlns:mvc="sap.ui.core.mvc"
-  xmlns:m="sap.m"
-  height="100%">
-  <m:Page title="Hello World"
-          showHeader="true"
-          enableScrolling="true"
-          class="sapUiContentPadding sapUiSizeCompact">
-    <m:content>
-        <m:Button text="Hello World" type="Emphasized" press="onPress"/>
-    </m:content>
-  </m:Page>
+height="100%"
+xmlns:mvc="sap.ui.core.mvc"
+xmlns:l="sap.ui.layout"
+xmlns="sap.m"
+xmlns:f="sap.f"
+xmlns:core="sap.ui.core"
+class="sapUiSizeCompact"
+controllerName="app.controller.Main">
+<App id="app">
+  <Page title="Otel Rezervasyon Yönetim Sistemi" class="background2">
+    <VBox width="100%" height="100%" alignItems="Center" justifyContent="Right">
+      <Button height="100%"
+        text="Otel Yönetim Raporu"
+        press="onReport"
+        type="Emphasized"/>
+      <Button height="100%" text="Rezervasyon Ekranı" type="Emphasized" press="onPress"/>
+    </VBox>
+  </Page>
+</App>
 </mvc:View>

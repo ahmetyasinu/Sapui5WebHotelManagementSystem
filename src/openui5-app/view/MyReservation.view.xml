@@ -87,8 +87,8 @@
           <Column width="11rem" hAlign="Center">
             <m:Label text="Sil"/>
             <template>
-              <m:Button text="(of) Seyahat Sil" type="Emphasized"
-                        press="onDeleteTravel"/>
+              <m:Button text="Seyahat Sil" type="Emphasized"
+                        press="deleteReservation"/>
             </template>
           </Column>
         </columns>

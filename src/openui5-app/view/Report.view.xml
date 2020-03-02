@@ -1,0 +1,59 @@
+<mvc:View
+height="100%"
+xmlns="sap.ui.table"
+xmlns:mvc="sap.ui.core.mvc"
+xmlns:u="sap.ui.unified"
+xmlns:c="sap.ui.core"
+xmlns:m="sap.m"
+class="sapUiSizeCompact"
+controllerName="app.controller.Report">
+  <m:Page
+    showHeader="false"
+    enableScrolling="false"
+    class="sapUiContentPadding">
+    <m:content>
+      <Table
+        rows="{report>/}"
+        selectionMode="MultiToggle"
+        visibleRowCount="7"
+        paste="onPaste"
+        ariaLabelledBy="title">
+        <extension>
+          <m:OverflowToolbar>
+            <m:Title id="title" text="Raporlar"/>
+            <m:ToolbarSpacer/>
+          </m:OverflowToolbar>
+        </extension>
+        <columns>
+          <Column width="11rem">
+            <m:Label text="Room Tipi İd"/>
+            <template>
+              <m:Text text="{report>roomTypeId}" wrapping="false"/>
+            </template>
+          </Column>
+          <Column width="11rem">
+            <m:Label text="Tipi"/>
+            <template>
+              <m:Text text="{report>type}" wrapping="false"/>
+            </template>
+          </Column>
+          <Column width="11rem">
+            <m:Label text="Rezervasyon Sayısı"/>
+            <template>
+              <m:Text text="{report>count}" wrapping="false"/>
+            </template>
+          </Column>
+          <Column width="13rem">
+            <m:Label text="Rezervasyon Ücretleri Toplamı"/>
+            <template>
+              <m:Text text="{report>sumPrice}" wrapping="false"/>
+            </template>
+          </Column>
+        </columns>
+        <footer>
+            <m:Button text="Başlangıç Ekranına Dön" press="turn" type="Accept" />
+        </footer>
+      </Table>
+    </m:content>
+  </m:Page>
+</mvc:View>
